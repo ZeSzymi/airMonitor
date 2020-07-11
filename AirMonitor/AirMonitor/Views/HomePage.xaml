@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:AirMonitor.ViewModels;assembly=AirMonitor"
+             x:Class="AirMonitor.Views.HomePage"
+             Title="Home Page">
+    <Grid>
+        <ListView ItemsSource="{Binding Measurements, Mode=TwoWay}" 
+                  ItemTapped="ListView_ItemTapped"
+                  SelectionMode="None" IsPullToRefreshEnabled="True"
+                  RefreshCommand="{Binding RefreshCommand, Mode=TwoWay}"
+                  IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Installation.Address.DisplayAddress1, Mode=TwoWay}"
+                              Detail="{Binding Installation.Address.DisplayAddress2, Mode=TwoWay}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" HorizontalOptions="Center"
+                           VerticalOptions="Center" />
+    </Grid>
+</ContentPage>
