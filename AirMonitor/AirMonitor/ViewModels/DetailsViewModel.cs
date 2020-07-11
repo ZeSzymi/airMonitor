@@ -17,7 +17,7 @@ namespace AirMonitor.ViewModels
             get => _item;
             set
             {
-                SetField(ref _item, value);
+                SetProperty(ref _item, value);
                 UpdateProperties();
             }
         }
@@ -46,70 +46,70 @@ namespace AirMonitor.ViewModels
         public String Title
         {
             get => _title;
-            set => SetField(ref _title, value);
+            set => SetProperty(ref _title, value);
         }
         
         private int _caqiValue = 57;
         public int CaqiValue
         {
             get => _caqiValue;
-            set => SetField(ref _caqiValue, value);
+            set => SetProperty(ref _caqiValue, value);
         }
 
         private string _caqiTitle = "Świetna jakość!";
         public string CaqiTitle
         {
             get => _caqiTitle;
-            set => SetField(ref _caqiTitle, value);
+            set => SetProperty(ref _caqiTitle, value);
         }
 
         private string _caqiDescription = "Możesz bezpiecznie wyjść z domu bez swojej maski anty-smogowej i nie bać się o swoje zdrowie.";
         public string CaqiDescription
         {
             get => _caqiDescription;
-            set => SetField(ref _caqiDescription, value);
+            set => SetProperty(ref _caqiDescription, value);
         }
 
         private int _pm25Value = 34;
         public int Pm25Value
         {
             get => _pm25Value;
-            set => SetField(ref _pm25Value, value);
+            set => SetProperty(ref _pm25Value, value);
         }
 
         private int _pm25Percent = 137;
         public int Pm25Percent
         {
             get => _pm25Percent;
-            set => SetField(ref _pm25Percent, value);
+            set => SetProperty(ref _pm25Percent, value);
         }
 
         private int _pm10Value = 67;
         public int Pm10Value
         {
             get => _pm10Value;
-            set => SetField(ref _pm10Value, value);
+            set => SetProperty(ref _pm10Value, value);
         }
 
         private int _pm10Percent = 135;
         public int Pm10Percent
         {
             get => _pm10Percent;
-            set => SetField(ref _pm10Percent, value);
+            set => SetProperty(ref _pm10Percent, value);
         }
 
         private int _humidityPercent = 29;
         public int HumidityPercent
         {
             get => _humidityPercent;
-            set => SetField(ref _humidityPercent, value);
+            set => SetProperty(ref _humidityPercent, value);
         }
 
         private int _pressureValue = 1027;
         public int PressureValue
         {
             get => _pressureValue;
-            set => SetField(ref _pressureValue, value);
+            set => SetProperty(ref _pressureValue, value);
         }
     }
 }

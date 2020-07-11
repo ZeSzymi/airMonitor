@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using AirMonitor.Const;
 using AirMonitor.Database;
 using AirMonitor.Views;
 using Newtonsoft.Json.Linq;
@@ -61,6 +62,9 @@ namespace AirMonitor
                     var dynamicJson = JObject.Parse(json);
 
                     ApiKey = dynamicJson["ApiKey"].Value<string>();
+                    Links.Api = dynamicJson["ApiUrl"].Value<string>();
+                    Links.Installations = dynamicJson["InstalationUrl"].Value<string>();
+                    Links.Measurement = dynamicJson["MeasurementUrl"].Value<string>();
                 }
             }
         }

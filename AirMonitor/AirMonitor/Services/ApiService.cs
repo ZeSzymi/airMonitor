@@ -30,8 +30,8 @@ namespace AirMonitor.Services
         {
             var parameters = new Dictionary<string, object>
             {
-                {"lat", location.Latitude},
-                {"lng", location.Longitude},
+                {"lat", location.Latitude.ToString().Replace(",", ".")},
+                {"lng", location.Longitude.ToString().Replace(",", ".")},
                 {"maxDistanceKM", -1},
                 {"maxResults", 10},
             };

@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using AirMonitor.Const;
@@ -6,6 +7,7 @@ using AirMonitor.Models;
 using AirMonitor.Services;
 using AirMonitor.Views;
 using Xamarin.Forms;
+using Xamarin.Forms.Maps;
 
 namespace AirMonitor.ViewModels
 {
@@ -16,11 +18,18 @@ namespace AirMonitor.ViewModels
         private INavigation _navigation;
 
         private ObservableCollection<Measurement> _measurements;
+        private ObservableCollection<MapLocation> _locations;
 
         public ObservableCollection<Measurement> Measurements
         {
             get => _measurements;
-            set => SetField(ref _measurements, value);
+            set => SetProperty(ref _measurements, value);
+        }
+
+        public ObservableCollection<MapLocation> Locations
+        {
+            get => _locations;
+            set => SetProperty(ref _locations, value);
         }
 
         private bool _isBusy;
@@ -28,7 +37,7 @@ namespace AirMonitor.ViewModels
         public bool IsBusy
         {
             get => _isBusy;
-            set => SetField(ref _isBusy, value);
+            set => SetProperty(ref _isBusy, value);
         }
 
         private bool _isRefreshing;
@@ -36,14 +45,14 @@ namespace AirMonitor.ViewModels
         public bool IsRefreshing
         {
             get => _isRefreshing;
-            set => SetField(ref _isRefreshing, value);
+            set => SetProperty(ref _isRefreshing, value);
         }
 
         private ICommand _refreshCommand;
 
         public ICommand RefreshCommand =>
-            _refreshCommand ?? (_refreshCommand = new Command( async () => await Refresh()));
-        
+            _refreshCommand ?? (_refreshCommand = new Command(async () => await Refresh()));
+
 
         private ICommand _navigateToDetailsCommand;
 
@@ -61,6 +70,15 @@ namespace AirMonitor.ViewModels
             Initialize();
         }
 
+        public Measurement GetItem(string address) => _measurements.FirstOrDefault(i => i.Installation.Address.DisplayAddress1.Equals(address));
+
+        private ICommand _infoWindowClickedCommand;
+        public ICommand InfoWindowClickedCommand => 
+                  _infoWindowClickedCommand ?? (_infoWindowClickedCommand = new Command<Measurement>(NavigateToDetails)); 
+        
+                
+            
+
         private async Task Initialize()
         {
             IsBusy = true;
@@ -73,6 +91,7 @@ namespace AirMonitor.ViewModels
             var location = await _locationService.GetLocation();
             var measurements = await _measurementsRepository.GetMeasurements(location, forceRefresh);
             Measurements = new ObservableCollection<Measurement>(measurements);
+            Locations = new ObservableCollection<MapLocation>(Measurements.Select(i => new MapLocation { Address = i.Installation.Address.DisplayAddress1, Description = "CAQI: " + i.CurrentDisplayValue, Position = new Position(i.Installation.Location.Latitude, i.Installation.Location.Longitude) }));
         }
 
         private async Task Refresh()

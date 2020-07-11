@@ -5,10 +5,8 @@ namespace AirMonitor.Services
 {
     public class LocationService
     {
-        public async Task<Location> GetLocation()
-        {
-            var request = new GeolocationRequest(GeolocationAccuracy.Medium);
-            return await Geolocation.GetLocationAsync(request);
-        }
+        public async Task<Location> GetLocation() =>
+            await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Medium));
+        
     }
 }

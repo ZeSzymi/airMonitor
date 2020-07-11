@@ -1,5 +1,6 @@
 using AirMonitor.Models;
 using AirMonitor.ViewModels;
+using System;
 using Xamarin.Forms;
 
 namespace AirMonitor.Views
@@ -13,7 +14,7 @@ namespace AirMonitor.Views
             BindingContext = new HomeViewModel(Navigation);
         }
 
-        void ListView_ItemTapped(System.Object sender, Xamarin.Forms.ItemTappedEventArgs e)
+        void ListView_ItemTapped(Object sender, ItemTappedEventArgs e)
         {
             _viewModel.NavigateToDetailsCommand.Execute(e.Item as Measurement);
         }
