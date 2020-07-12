@@ -14,11 +14,11 @@ namespace AirMonitor.ViewModels
             if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        protected bool SetProperty<T>(ref T field, T value,
+        protected bool SetProperty<T>(ref T storage, T value,
             [CallerMemberName] string propertyName = null)
         {
-            if (EqualityComparer<T>.Default.Equals(field, value)) return false;
-            field = value;
+            if (EqualityComparer<T>.Default.Equals(storage, value)) return false;
+            storage = value;
             OnPropertyChanged(propertyName);
             return true;
         }
