@@ -1,6 +1,6 @@
 using System;
 
-namespace AirMonitor.Const
+namespace AirMonitor.Global
 {
     public static class Links
     {

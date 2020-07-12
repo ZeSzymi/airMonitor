@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using AirMonitor.Models;
-using AirMonitor.Database.Entities;
+using AirMonitor.Extensions.Entities;
 using Newtonsoft.Json;
 using SQLite;
 
-namespace AirMonitor.Database
+namespace AirMonitor.Extensions
 {
     public class DatabaseManager : IDisposable
     {

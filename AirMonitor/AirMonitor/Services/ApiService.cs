@@ -2,16 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System.Web;
-using AirMonitor.Const;
+using AirMonitor.Global;
 using AirMonitor.Models;
-using AirMonitor.Utils;
+using AirMonitor.Extension;
 using Newtonsoft.Json;
 using Xamarin.Essentials;
-using Xamarin.Forms.Internals;
 
 namespace AirMonitor.Services
 {
@@ -99,15 +96,15 @@ namespace AirMonitor.Services
 
         private HttpClient _httpClient()
         {
-            HttpClient client = new HttpClient
+            HttpClient httpClient = new HttpClient
             {
                 BaseAddress = new Uri(_url)
             };
 
-            client.DefaultRequestHeaders.Add("apikey", _apiKey);
-            client.DefaultRequestHeaders.Add("Accept", "application/json");
-            client.DefaultRequestHeaders.Add("Accept-Encoding", "gzip");
-            return client;
+            httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
+            httpClient.DefaultRequestHeaders.Add("Accept-Encoding", "gzip");
+            httpClient.DefaultRequestHeaders.Add("apikey", _apiKey);
+            return httpClient;
         }
     }
 }

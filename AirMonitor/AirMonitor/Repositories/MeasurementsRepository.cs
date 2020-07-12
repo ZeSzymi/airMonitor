@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AirMonitor.Database;
+using AirMonitor.Extensions;
 using AirMonitor.Models;
 using AirMonitor.Services;
 using Xamarin.Essentials;
@@ -40,8 +40,7 @@ namespace AirMonitor
                 return true;
             }
 
-            var isAnyMeasurementOld =
-                savedMeasurements.Any(s => s.Current.TillDateTime.AddMinutes(60) < DateTime.UtcNow);
+            var isAnyMeasurementOld = savedMeasurements.Any(s => s.Current.TillDateTime.AddMinutes(60) < DateTime.UtcNow);
             return !savedMeasurements.Any() || isAnyMeasurementOld;
         }
     }

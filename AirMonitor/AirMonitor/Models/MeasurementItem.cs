@@ -1,5 +1,5 @@
 using System;
-using AirMonitor.Database.Entities;
+using AirMonitor.Extensions.Entities;
 
 namespace AirMonitor.Models
 {

@@ -2,7 +2,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using AirMonitor.Const;
+using AirMonitor.Global;
 using AirMonitor.Models;
 using AirMonitor.Services;
 using AirMonitor.Views;

@@ -1,11 +1,11 @@
-using AirMonitor.Database.Entities;
+using AirMonitor.Extensions.Entities;
 using AirMonitor.Models;
 using Newtonsoft.Json;
 using Xamarin.Essentials;
 
-namespace AirMonitor.Database
+namespace AirMonitor.Extensions
 {
-    public static class DatabaseUtils
+    public static class DatabaseExtensions
     {
         public static Installation ToInstallation(this InstallationEntity installationEntity)
         {

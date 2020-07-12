@@ -18,6 +18,7 @@
     <PackageReference Include="Xamarin.Forms.Maps" Version="4.7.0.1080" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Utils\" />
     <Folder Include="Views\Controls\" />
   </ItemGroup>
   <ItemGroup>

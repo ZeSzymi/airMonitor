@@ -3,7 +3,7 @@ using AirMonitor.Models;
 using Newtonsoft.Json;
 using SQLite;
 
-namespace AirMonitor.Database.Entities
+namespace AirMonitor.Extensions.Entities
 {
     public class InstallationEntity
     {

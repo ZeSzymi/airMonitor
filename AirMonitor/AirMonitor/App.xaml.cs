@@ -3,8 +3,8 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using AirMonitor.Const;
-using AirMonitor.Database;
+using AirMonitor.Global;
+using AirMonitor.Extensions;
 using AirMonitor.Views;
 using Newtonsoft.Json.Linq;
 using Xamarin.Forms;
@@ -64,7 +64,7 @@ namespace AirMonitor
                     ApiKey = dynamicJson["ApiKey"].Value<string>();
                     Links.Api = dynamicJson["ApiUrl"].Value<string>();
                     Links.Installations = dynamicJson["InstalationUrl"].Value<string>();
-                    Links.Measurement = dynamicJson["MeasurementUrl"].Value<string>();
+                    Links.Measurement = dynamicJson["MeasurmentUrl"].Value<string>();
                 }
             }
         }

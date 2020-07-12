@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AirMonitor.Utils
+namespace AirMonitor.Extension
 {
-    public static class UrlUtils
+    public static class UrlExtensions
     {
         public static string AddParameters(this string url, IDictionary<string, object> parameters) => 
             $"{url}?{parameters.ToQueryString()}";
